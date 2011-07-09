@@ -1,0 +1,37 @@
+{% extends 'MyAppAssociationBundle::layout.html.twig' %}
+
+{% block title %}Liste des contacts{% endblock %}
+
+{% block content %}
+
+<form id="form_find" action="{{ path('myapp_contact_find') }}" method="post">
+        {{ form_widget(form) }}
+    <input type="submit" value="find" />
+</form>
+<div class="loading"></div>        
+<div id="find_results"> 
+       {% include 'MyAppAssociationBundle:Contact:list_contact.html.twig' with {'contacts' : contacts}  %}
+
+        <p><a href="{{ path('myapp_contact_add') }}">Ajouter un contact</a></p>
+</div>
+
+<script>
+    $(".loading").hide();
+    $("#form_find").submit(function(){ 
+    $(".loading").show();
+    var motcle = $("#find_motcle").val();
+    var DATA = 'motcle=' + motcle;
+    $.ajax({
+    type: "POST",
+    url: "{{ path('myapp_contact_find')}}",
+    data: DATA,
+    cache: false,
+    success: function(data){
+       $('#find_results').html(data);
+       $(".loading").hide();
+    }
+    });    
+    return false;
+    });
+</script>        
+{% endblock %}

@@ -1,0 +1,18 @@
+{# empty Twig template #}
+
+<table>
+		{% for member in members %}
+    <tr>
+        <td>{{ member.Lastname }}</td>
+        <td>{{ member.FirstName }}</td>
+        <td>{{ member.birthday|date('d/m/Y') }}</td>
+        <td>{{ member.sexe }}</td>
+        <td><a href="{{ path('myapp_member_modify', { 'id': member.id }) }}">Modifier</a></td>
+        <td><a href="{{ path('myapp_member_delete', { 'id': member.id }) }}">Supprimer</a></td>
+        <td><a href="{{ path('myapp_member_managecontact', { 'id': member.id }) }}">Gerer les contacts</a></td>
+        
+    </tr>
+		{% else %}
+    <tr><td>Aucun membres </td></tr>
+        {% endfor %}
+</table>

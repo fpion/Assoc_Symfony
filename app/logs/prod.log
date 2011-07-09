@@ -1,0 +1,1 @@
+[2011-06-23 22:09:49] request.CRITICAL: Symfony\Component\Config\Exception\FileLoaderImportException: Cannot import resource "@MyAppAssociationBundle/Resources/config/routing.yml" from "D:\xampp\htdocs\Association\app/config/routing.yml". (uncaught exception) at D:\xampp\htdocs\Association\vendor\symfony\src\Symfony\Component\Config\Loader\FileLoader.php line 89 

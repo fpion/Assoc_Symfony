@@ -1,0 +1,17 @@
+{# empty Twig template #}
+
+
+<html>
+    <body>
+        <h1>Modify </h1>
+            {% if message %}
+        <p>{{ message }}</p>
+{% endif %}
+
+        <form action="" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+            <input type="submit" />
+        </form>
+        <p><a href="{{ path('myapp_category_list') }}">Retour à la liste des categories</a></p>
+    </body>
+</html>

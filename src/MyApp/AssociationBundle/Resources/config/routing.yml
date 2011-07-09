@@ -1,0 +1,74 @@
+#homepage:
+#    pattern:  /
+#    defaults: { _controller: MyAppAssociationBundle:Default:index }
+
+myapp_accueil:
+  pattern: /
+  defaults: { _controller: MyAppAssociationBundle:Default:index }
+
+myapp_lang_choice:
+  pattern: /choicelang/{lang}
+  defaults: { _controller: MyAppAssociationBundle:Default:choicelang }
+    
+#Category
+myapp_category_list:
+  pattern: /category/
+  defaults: { _controller: MyAppAssociationBundle:Category:list }
+myapp_category_delete:
+  pattern: /category/delete/{id}
+  defaults: { _controller: MyAppAssociationBundle:Category:delete }
+myapp_category_add:
+  pattern: /category/add
+  defaults: { _controller: MyAppAssociationBundle:Category:modify }
+myapp_category_modify:
+  pattern: /category/modify/{id}
+  defaults: { _controller: MyAppAssociationBundle:Category:modify }
+  
+#Member  
+myapp_member_list:
+  pattern: /member/
+  defaults: { _controller: MyAppAssociationBundle:Member:list }
+myapp_member_add:
+  pattern: /member/add
+  defaults: { _controller: MyAppAssociationBundle:Member:modify }
+myapp_member_modify:
+  pattern: /member/modify/{id}
+  defaults: { _controller: MyAppAssociationBundle:Member:modify }
+myapp_member_delete:
+  pattern: /member/delete/{id}
+  defaults: { _controller: MyAppAssociationBundle:Member:delete }
+myapp_member_find:
+  pattern: /member/find
+  defaults: { _controller: MyAppAssociationBundle:Member:find }
+  requirements:
+    _method: POST  
+myapp_member_managecontact:
+  pattern: /member/managecontact/{id}
+  defaults: { _controller: MyAppAssociationBundle:Member:modifycontact }    
+myapp_member_addcontact:
+  pattern: /member/addcontact/{id}/{idcontact}
+  defaults: { _controller: MyAppAssociationBundle:Member:modifycontact }
+  
+#Contact
+myapp_contact_list:
+  pattern: /contact/
+  defaults: { _controller: MyAppAssociationBundle:Contact:list }
+myapp_contact_delete:
+  pattern: /contact/delete/{id}
+  defaults: { _controller: MyAppAssociationBundle:Contact:delete }
+myapp_contact_add:
+  pattern: /contact/add
+  defaults: { _controller: MyAppAssociationBundle:Contact:modify }
+myapp_contact_modify:
+  pattern: /contact/modify/{id}
+  defaults: { _controller: MyAppAssociationBundle:Contact:modify }
+myapp_contact_find:
+  pattern: /contact/find
+  defaults: { _controller: MyAppAssociationBundle:Contact:find }
+  requirements:
+    _method: POST  
+myapp_contact_findaddmember:
+  pattern: /contact/findaddmember
+  defaults: { _controller: MyAppAssociationBundle:Contact:findAddmember }
+  requirements:
+    _method: POST  

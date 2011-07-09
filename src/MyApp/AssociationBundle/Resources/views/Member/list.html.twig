@@ -1,0 +1,38 @@
+{% extends 'MyAppAssociationBundle::layout.html.twig' %}
+
+{% block title %}Liste des membres{% endblock %}
+
+{% block content %}
+<form id="form_find" action="{{ path('myapp_member_find') }}" method="post">
+        {{ form_widget(form) }}
+    <input type="submit" value="find" />
+</form>
+<div class="loading"></div>
+<div id="find_results"> 
+    {% include 'MyAppAssociationBundle:Member:list_member.html.twig' with {'members' : members}  %}
+
+       {#% include 'MyAppAssociationBundle:Member:list_member.html.twig' with {'members' : members}  %#}
+
+
+<p><a href="{{ path('myapp_member_add') }}">Ajouter un membre</a></p>
+</div>
+<script>
+    $(".loading").hide();
+    $("#form_find").submit(function(){ 
+    $(".loading").show();
+    var motcle = $("#find_motcle").val();
+    var DATA = 'motcle=' + motcle;
+    $.ajax({
+    type: "POST",
+    url: "{{ path('myapp_member_find')}}",
+    data: DATA,
+    cache: false,
+    success: function(data){
+       $('#find_results').html(data);
+       $(".loading").hide();
+    }
+    });    
+    return false;
+    });
+</script>
+{% endblock %}

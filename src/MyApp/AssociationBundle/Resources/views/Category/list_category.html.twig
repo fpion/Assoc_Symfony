@@ -1,0 +1,14 @@
+{# empty Twig template #}
+
+
+<table>
+    {% for cat in categories %}
+    <tr>
+        <td>{{ cat.nom }}</td>
+        <td><a href="{{ path('myapp_category_modify', { 'id': cat.id }) }}">Modifier</a></td>
+        <td><a href="{{ path('myapp_category_delete', { 'id': cat.id }) }}">Supprimer</a></td>
+    </tr>
+    {% else %}
+    <tr><td>Aucune catégorie n'a été trouvée </td></tr>
+    {% endfor %}
+</table>

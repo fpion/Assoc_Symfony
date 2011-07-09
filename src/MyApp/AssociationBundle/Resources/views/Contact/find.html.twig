@@ -1,0 +1,9 @@
+
+{% block content %}
+<form id="form_find" action="{{ path('myapp_contact_find') }}" method="post">
+	{{ form_widget(form) }}
+	<input type="submit" value="find" />
+</form>
+
+//...
+{% endblock %}

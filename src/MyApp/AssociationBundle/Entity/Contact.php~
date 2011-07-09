@@ -1,0 +1,74 @@
+<?php
+
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+namespace MyApp\AssociationBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
+/**
+ * Description of Contact
+ *
+ * @author pionf
+ */
+
+/**
+ * @ORM\Entity
+ */
+class Contact {
+
+    /**
+     * @ORM\GeneratedValue
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     */
+    private $id;
+    /**
+     * @ORM\Column(type="string",length="255")
+     * @Assert\NotBlank()
+     * @Assert\MinLength(3)
+     */
+    private $firstname;
+    /**
+     * @ORM\Column(type="string",length="500")
+     */
+    private $lastname;
+    /**
+     * @ORM\Column(type="string",length="1")
+     * @Assert\NotBlank()
+     * @Assert\Choice(choices = {"M", "F"})
+     */
+    private $sexe;
+    /**
+     * @ORM\Column(type="date")
+     * @Assert\NotBlank()
+     */
+    private $birthday;
+    /**
+     * @ORM\Column(type="string",length="255")
+     * @Assert\Email
+     */
+    private $email;
+    /**
+     * @ORM\Column(type="string",length="12")
+     */
+    private $tel;
+   
+    /**
+     * Owning Side
+     *
+     * @ORM\ManyToMany(targetEntity="Member", inversedBy="contacts")
+     * @ORM\JoinTable(name="contacts_member",
+     *      joinColumns={@ORM\JoinColumn(name="contact_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="member_id", referencedColumnName="id")}
+     *      )
+     */
+    private $members;
+
+}
+
+?>

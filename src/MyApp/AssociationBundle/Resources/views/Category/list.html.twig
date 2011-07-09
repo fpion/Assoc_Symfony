@@ -1,0 +1,11 @@
+{% extends 'MyAppAssociationBundle::layout.html.twig' %}
+
+{% block title %}Liste des catégories{% endblock %}
+
+{% block content %}
+
+   {% include 'MyAppAssociationBundle:Category:list_category.html.twig' with {'categories' : categories}  %}
+
+        <p><a href="{{ path('myapp_category_add') }}">Ajouter une Categorie</a></p>
+{% endblock %}
+		

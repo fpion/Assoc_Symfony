@@ -1,0 +1,12 @@
+{# empty Twig template #}
+<table>
+		{% for contact in contacts %}
+    <tr>
+        {% include 'MyAppAssociationBundle:Contact:sum_contact.html.twig' with {'contact': contact} %}
+        <!-- <td><a href="{{ path('myapp_contact_modify', { 'id': contact.id }) }}">Ajouter le contact</a></td> -->
+        
+    </tr>
+		{% else %}
+    <tr><td>Aucun contacts </td></tr>
+        {% endfor %}
+</table>
