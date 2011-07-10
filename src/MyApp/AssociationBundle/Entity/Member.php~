@@ -32,12 +32,13 @@ class Member {
 
     /**
      * @ORM\Column(type="string",length="500")
+     * @Assert\MinLength(limit = 3, message = "Le nom de famille doit avoir au moins {{ limit }} caractères")
      */    
     private $lastname;
 
     /**
      * @ORM\Column(type="string",length="1")
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(message = "Veuillez spécifier le sexe du membre")
      * @Assert\Choice(choices = {"M", "F"})
      */    
     private $sexe;
@@ -129,6 +130,17 @@ class Member {
     }
 
     /**
+     * Get sexe
+     *
+     * @return string $firstname & $lastname
+     */
+    public function getPrenomNom()
+    {
+        return $this->firstname.' '.$this->lastname; 
+    }
+    
+    
+    /**
      * Set birthday
      *
      * @param date $birthday
@@ -166,5 +178,29 @@ class Member {
     public function getCategory()
     {
         return $this->category;
+    }
+    public function __construct()
+    {
+        $this->contacts = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Add contacts
+     *
+     * @param MyApp\AssociationBundle\Entity\Contact $contacts
+     */
+    public function addContacts(\MyApp\AssociationBundle\Entity\Contact $contacts)
+    {
+        $this->contacts[] = $contacts;
+    }
+
+    /**
+     * Get contacts
+     *
+     * @return Doctrine\Common\Collections\Collection $contacts
+     */
+    public function getContacts()
+    {
+        return $this->contacts;
     }
 }
